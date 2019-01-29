@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  apache:
+    build: .
+    image: my_apache
+    volumes:
+      - ./htdocs:/usr/local/apache2/htdocs
+      - ./conf/httpd.conf:/usr/local/apache2/conf/httpd.conf 
+      - ./conf/extra/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf 
+      - ./conf/extra/httpd-ssl.conf:/usr/local/apache2/conf/extra/httpd-ssl.conf
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: "always"

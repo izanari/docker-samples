@@ -1,0 +1,7 @@
+FROM httpd:2.4.38
+
+LABEL maintainer "yourname <yourmailaddress>"
+
+RUN apt-get update && apt-get install -y \
+    git \
+    curl

@@ -7,9 +7,9 @@
 - htdocsとApacheの設定ファイルをマウントしています
 ### 起動方法
 ```
-docker-compose -f "apache/docker-compose.yml" up -d --build
+docker-compose -f "docker-compose.yml" up -d --build
 ```
 ### 停止方法
 ```
-docker-compose -f "apache/docker-compose.yml" down
+docker-compose -f "docker-compose.yml" down
 ```

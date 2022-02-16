@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  httpd:
+    build: 
+      context: ./docker/httpd
+    ports:
+      - 80:80
+    volumes:
+      - ./htdocs:/usr/local/apache2/htdocs
+    container_name: httpd
+  php-fpm:
+    build: 
+      context: ./docker/php-fpm
+    volumes:
+      - ./htdocs:/usr/local/apache2/htdocs
+    container_name: php-fpm
+  mysql:
+    image: mysql:5.7.36
+    volumes:
+      - ./mysql:/var/lib/mysql
+    #command: "--innodb_file_format=Barracuda --innodb-large-prefix=true --innodb-file-per-table=true --max_allowed_packet=32M"
+    ports:
+      - 3306:3306
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: scott
+      MYSQL_PASSWORD: tiger
